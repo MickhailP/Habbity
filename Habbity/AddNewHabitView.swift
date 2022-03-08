@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct AddNewHabitView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     @StateObject var habits = Habits()
     @StateObject var icon = Icon()
@@ -18,9 +18,11 @@ struct AddNewHabitView: View {
     //    let habits: Habits
     
     @State private var name = ""
-    @State private var actionPlan = ""
+    @State private var motivation = ""
     @State private var amountPerDay = 1
     @State private var showIconView = false
+    
+    @State private var reminder = Date.now
     
     let columns = [
         GridItem(.adaptive(minimum: 60))
@@ -47,9 +49,13 @@ struct AddNewHabitView: View {
                     .foregroundColor(.black)
                     
                     Section {
-                        TextField("Your action plan", text: $actionPlan)
+                        TextField("What will motivate you?", text: $motivation)
                         
                         Stepper("\(amountPerDay) times a day", value: $amountPerDay, in: 1...20)
+                    }
+                    
+                    Section{
+                        DatePicker("Select reminder time", selection: $reminder, displayedComponents: .hourAndMinute)
                     }
                     
                     Section(header: Text("Select habit color")) {
@@ -81,21 +87,23 @@ struct AddNewHabitView: View {
                 }
                 
                 .navigationBarTitle("Add new habit")
-                .navigationBarItems(
-                    
-                    trailing: Button(action: {
-                        let habit = Habit(name: self.name, actionPlan: self.actionPlan, amountPerDay: self.amountPerDay, iconColor: icon.color, iconName: icon.name)
-                        
-                        self.habits.items.append(habit)
-                        self.presentationMode.wrappedValue.dismiss()
-                        
-                    }){
-                        
-                        HStack {
-                            Text("Save")
-                            Image(systemName: "plus.circle")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button{
+                            let habit = Habit(name: self.name, motivation: self.motivation, amountPerDay: self.amountPerDay, iconColor: icon.color, iconName: icon.name, reminder: self.reminder)
+                            
+                            habits.addNew(habit)
+                            dismiss()
+                        } label: {
+                            HStack {
+                                Text("Save")
+                                Image(systemName: "plus.circle")
+                            }
                         }
-                    })
+                    }
+                }
+                
+                
                 .sheet(isPresented: $showIconView ){
                     IconView(icon: icon)
                 }

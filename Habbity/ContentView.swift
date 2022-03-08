@@ -20,6 +20,11 @@ struct ContentView: View {
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
+            
+            //ADD PROGRESS VIEW
+            
+            //ADD IDEAS VIEW
+            //JSON files with examples of Habits divided be groups. Think about remote handling of new ideas
         }
         .accentColor(Color.green)
     }

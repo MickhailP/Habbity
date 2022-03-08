@@ -16,7 +16,7 @@ struct HabitView: View {
             Text("Count \(habit.dailyCounter)")
             
             Button("Add one") {
-                //                habit.dailyCounter += 1
+                //      habit.dailyCounter += 1
                 
                 var updatedHabit = habit
                 updatedHabit.dailyCounter += 1

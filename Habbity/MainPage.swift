@@ -30,7 +30,7 @@ struct MainPage: View {
                             Text(item.name)
                                 .font(.headline)
                                 .padding(.bottom, 5)
-                            Text(item.actionPlan)
+                            Text(item.motivation)
                                 .font(.subheadline)
                                 .padding(.bottom, 5)
                             HStack {

@@ -15,7 +15,6 @@
 		D758DFF8274A754400CBBF16 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758DFF7274A754400CBBF16 /* MainPage.swift */; };
 		D758DFFA274A755D00CBBF16 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758DFF9274A755D00CBBF16 /* SettingView.swift */; };
 		D758DFFC274A989100CBBF16 /* AddNewHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758DFFB274A989100CBBF16 /* AddNewHabitView.swift */; };
-		D76B5519275CE8680033FEEB /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B5518275CE8670033FEEB /* Habit.swift */; };
 		D76B551B275D32990033FEEB /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B551A275D32990033FEEB /* Icon.swift */; };
 		D76B551D275D346A0033FEEB /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B551C275D346A0033FEEB /* Habits.swift */; };
 		D76B551F275E7B6C0033FEEB /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B551E275E7B6B0033FEEB /* HabitView.swift */; };
@@ -31,10 +30,10 @@
 		D758DFF7274A754400CBBF16 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		D758DFF9274A755D00CBBF16 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		D758DFFB274A989100CBBF16 /* AddNewHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitView.swift; sourceTree = "<group>"; };
-		D76B5518275CE8670033FEEB /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		D76B551A275D32990033FEEB /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		D76B551C275D346A0033FEEB /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
 		D76B551E275E7B6B0033FEEB /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		D7A75BD827D7366D005DB370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,13 +66,13 @@
 		D758DFE8274A746F00CBBF16 /* Habbity */ = {
 			isa = PBXGroup;
 			children = (
+				D7A75BD827D7366D005DB370 /* Info.plist */,
 				D758DFE9274A746F00CBBF16 /* HabbityApp.swift */,
 				D758DFEB274A746F00CBBF16 /* ContentView.swift */,
 				D758DFF7274A754400CBBF16 /* MainPage.swift */,
 				D76B551E275E7B6B0033FEEB /* HabitView.swift */,
 				D758DFFB274A989100CBBF16 /* AddNewHabitView.swift */,
 				D76B551C275D346A0033FEEB /* Habits.swift */,
-				D76B5518275CE8670033FEEB /* Habit.swift */,
 				D738ACE227553D5500F8B4A0 /* IconView.swift */,
 				D76B551A275D32990033FEEB /* Icon.swift */,
 				D758DFF9274A755D00CBBF16 /* SettingView.swift */,
@@ -165,7 +164,6 @@
 				D738ACE327553D5500F8B4A0 /* IconView.swift in Sources */,
 				D76B551D275D346A0033FEEB /* Habits.swift in Sources */,
 				D758DFFC274A989100CBBF16 /* AddNewHabitView.swift in Sources */,
-				D76B5519275CE8680033FEEB /* Habit.swift in Sources */,
 				D758DFFA274A755D00CBBF16 /* SettingView.swift in Sources */,
 				D758DFEA274A746F00CBBF16 /* HabbityApp.swift in Sources */,
 				D76B551B275D32990033FEEB /* Icon.swift in Sources */,
@@ -304,6 +302,7 @@
 				DEVELOPMENT_TEAM = 95D5HHTHLU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Habbity/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -333,6 +332,7 @@
 				DEVELOPMENT_TEAM = 95D5HHTHLU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Habbity/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
