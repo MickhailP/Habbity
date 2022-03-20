@@ -23,7 +23,7 @@ struct Habit: Codable, Identifiable, Equatable {
     var reminder: Date
 
     
-    static let example = Habit( name: "example", motivation: "your goal", dailyCounter: 0, amountPerDay: 1, iconColor: "book", iconName: "book", reminder: Date.now)
+    static let example = Habit( name: "example", motivation: "your goal", dailyCounter: 0, amountPerDay: 1, iconColor: "mint", iconName: "book", reminder: Date.now)
 
 }
 

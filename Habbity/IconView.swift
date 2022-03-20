@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct IconView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     @ObservedObject var icon: Icon
+    var habit: Habit
     
     let columns = [
         GridItem(.adaptive(minimum: 70))
@@ -25,7 +26,7 @@ struct IconView: View {
                     .font(.system(size: 40))
                     .onTapGesture {
                         icon.name = name
-                        self.presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }
             }
         }
@@ -38,6 +39,6 @@ struct IconView: View {
 
 struct IconView_Previews: PreviewProvider {
     static var previews: some View {
-        IconView(icon: Icon())
+        IconView(icon: Icon(), habit: Habit.example)
     }
 }

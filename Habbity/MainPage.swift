@@ -19,27 +19,27 @@ struct MainPage: View {
         NavigationView {
             
             List{
-                ForEach(habits.items, id: \.id){ item in
+                ForEach(habits.items, id: \.id){ habit in
                     HStack {
                         Circle()
-                            .fill(Color(item.iconColor))
+                            .fill(Color(habit.iconColor))
                             .frame(width: 30, height: 30)
                             .padding(.trailing)
                         
                         VStack(alignment: .leading){
-                            Text(item.name)
+                            Text(habit.name)
                                 .font(.headline)
                                 .padding(.bottom, 5)
-                            Text(item.motivation)
+                            Text(habit.motivation)
                                 .font(.subheadline)
                                 .padding(.bottom, 5)
                             HStack {
                                 Text("Daily goal:")
                                     .font(.subheadline)
-                                Text("\(item.dailyCounter) / \(item.amountPerDay)")
+                                Text("\(habit.dailyCounter) / \(habit.amountPerDay)")
                                     .font(.subheadline)
                                 NavigationLink("Look") {
-                                    HabitView(habits: habits, habit: item)
+                                    HabitView(habits: habits, habit: habit)
                                 }
                                 
                             }
@@ -52,10 +52,10 @@ struct MainPage: View {
                             //                                counter.daily += 1
                             
                             //DAILY HABIT COUNTER
-                            var updatedHabit = item
+                            var updatedHabit = habit
                             updatedHabit.dailyCounter += 1
                             
-                            if let index = habits.items.firstIndex(of: item){
+                            if let index = habits.items.firstIndex(of: habit){
                                 habits.items[index] = updatedHabit
                             }
                         }) {
