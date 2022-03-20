@@ -57,7 +57,7 @@ struct AddNewHabitView: View {
                                 .font(.title2)
                         }
                     }
-                    .foregroundColor(.black)
+//                    .foregroundColor(.black)
                     
                     //Write Motivation and how much time per day do you want to make habits
                     Section {
@@ -96,7 +96,7 @@ struct AddNewHabitView: View {
                             }
                         }
                     }
-                    .foregroundColor(.black)
+//                    .foregroundColor(.black)
                     
                     //Select suggested habits
                     Section(header: Text("Or use suggested habits")){
@@ -104,7 +104,7 @@ struct AddNewHabitView: View {
                     }
                 }
                 
-                .navigationBarTitle("Add new habit")
+                .navigationBarTitle("Add new habit 📝")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {

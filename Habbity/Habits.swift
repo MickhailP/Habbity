@@ -59,6 +59,11 @@ struct Habit: Codable, Identifiable, Equatable {
         save()
     }
     
+    func removeItems(at offsets: IndexSet) {
+        items.remove(atOffsets: offsets)
+        save()
+    }
+    
     //add notification to our habit
     func addNotification(for habit: Habit) {
 

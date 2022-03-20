@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainPage: View {
+    @Environment(\.colorScheme) var colorScheme
+
     
     @State private var showAddHabitView = false
     
@@ -20,63 +22,79 @@ struct MainPage: View {
             
             List{
                 ForEach(habits.items, id: \.id){ habit in
-                    HStack {
-                        Circle()
-                            .fill(Color(habit.iconColor))
-                            .frame(width: 30, height: 30)
-                            .padding(.trailing)
-                        
-                        VStack(alignment: .leading){
-                            Text(habit.name)
-                                .font(.headline)
-                                .padding(.bottom, 5)
-                            Text(habit.motivation)
-                                .font(.subheadline)
-                                .padding(.bottom, 5)
+                        ZStack {
+                            
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .fill(colorScheme == .dark ? Color("dark") : .white)
+                                .shadow(color: .black.opacity(0.3), radius: 5)
+                            
+                            NavigationLink(destination: HabitView(habits: habits, habit: habit) ){
                             HStack {
-                                Text("Daily goal:")
-                                    .font(.subheadline)
-                                Text("\(habit.dailyCounter) / \(habit.amountPerDay)")
-                                    .font(.subheadline)
-                                NavigationLink("Look") {
-                                    HabitView(habits: habits, habit: habit)
+                                Image(systemName: habit.iconName)
+                                    .foregroundColor(Color(habit.iconColor))
+                                    .font(.title)
+                                    .padding(.trailing)
+                                
+                                VStack(alignment: .leading){
+                                    Text(habit.name)
+                                        .font(.headline)
+                                        .padding(.bottom, 5)
+                                    Text(habit.motivation)
+                                        .font(.subheadline)
+                                        .padding(.bottom, 5)
+                                    HStack {
+                                        Text("Daily goal:")
+                                            .font(.subheadline)
+                                        Text("\(habit.dailyCounter) / \(habit.amountPerDay)")
+                                            .font(.subheadline)
+                                    }
+                                    
                                 }
                                 
+                                Spacer()
+                                
+                                Button(action: {
+                                    //DAILY HABIT COUNTER
+                                    var updatedHabit = habit
+                                    updatedHabit.dailyCounter += 1
+                                    
+                                    if let index = habits.items.firstIndex(of: habit){
+                                        habits.items[index] = updatedHabit
+                                    }
+                                }) {
+                                    Image(systemName: "checkmark.circle")
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .foregroundColor(Color.blue)
+                                .font(.system(size: 30))
+                                .padding(.trailing, 30)
+                                
                             }
-                            
                         }
-                        Spacer()
-                        
-                        Button(action: {
-                            //                                var counter = habits.items[item]
-                            //                                counter.daily += 1
-                            
-                            //DAILY HABIT COUNTER
-                            var updatedHabit = habit
-                            updatedHabit.dailyCounter += 1
-                            
-                            if let index = habits.items.firstIndex(of: habit){
-                                habits.items[index] = updatedHabit
-                            }
-                        }) {
-                            Image(systemName: "checkmark.circle")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .foregroundColor(Color.blue)
-                        .font(.system(size: 30))
-                        .padding(.trailing, 30)
+                            .padding()
                         
                     }
+                        
                 }
-                .onDelete(perform: removeItems)
+                
+                .onDelete{ _ in 
+                    Task { @MainActor in
+                        habits.removeItems
+                    }
+                }
+               
+                .listRowSeparator(.hidden)
+
             }
-            
+
+            .listStyle(PlainListStyle())
             .navigationBarTitle("My habits")
-            .navigationBarItems(trailing:
-                                    Button(action:{
-                showAddHabitView = true
-            }) {
-                VStack{
+            .navigationBarItems(
+                trailing:
+                    Button(action:{
+                        showAddHabitView = true
+                    }) {
+                        VStack{
                     Image(systemName: "plus.circle")
                     
                     Text("Add new habit")
@@ -89,9 +107,7 @@ struct MainPage: View {
         }
     }
     
-    func removeItems(at offsets: IndexSet) {
-        habits.items.remove(atOffsets: offsets)
-    }
+    
 }
 
 struct MainPage_Previews: PreviewProvider {
