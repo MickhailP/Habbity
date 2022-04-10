@@ -12,7 +12,8 @@ struct AddNewHabitView: View {
     @Environment(\.dismiss) var dismiss
     
     var habit = Habit.example
-    @StateObject var habits = Habits()
+    @ObservedObject var habits: Habits
+    
     @StateObject var icon = Icon()
     
     
@@ -104,7 +105,7 @@ struct AddNewHabitView: View {
                     }
                 }
                 
-                .navigationBarTitle("Add new habit 📝")
+                .navigationBarTitle("📝 Add a new habit")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {

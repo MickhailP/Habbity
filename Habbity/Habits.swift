@@ -8,25 +8,6 @@
 import Foundation
 import UserNotifications
 
-struct Habit: Codable, Identifiable, Equatable {
-    var id = UUID()
-    
-    let name: String
-    let motivation: String
-    
-    var dailyCounter = 0
-    let amountPerDay: Int
-    
-    let iconColor: String
-    var iconName: String
-    
-    var reminder: Date
-
-    
-    static let example = Habit( name: "example", motivation: "your goal", dailyCounter: 0, amountPerDay: 1, iconColor: "mint", iconName: "book", reminder: Date.now)
-
-}
-
 
 @MainActor class Habits: ObservableObject {
     
@@ -62,6 +43,13 @@ struct Habit: Codable, Identifiable, Equatable {
     func removeItems(at offsets: IndexSet) {
         items.remove(atOffsets: offsets)
         save()
+    }
+    
+    func update(habit: Habit) {
+        
+        if let index = items.firstIndex(of: habit){
+            items[index] = habit
+        }
     }
     
     //add notification to our habit
