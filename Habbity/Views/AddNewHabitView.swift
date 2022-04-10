@@ -11,14 +11,10 @@ import SwiftUI
 struct AddNewHabitView: View {
     @Environment(\.dismiss) var dismiss
     
-    var habit = Habit.example
-    @ObservedObject var habits: Habits
+    @ObservedObject var viewModel: HabitsViewModel
     
     @StateObject var icon = Icon()
     
-    
-    //    let habit: HabitItem
-    //    let habits: Habits
     
     @State private var name = ""
     @State private var motivation = ""
@@ -34,10 +30,6 @@ struct AddNewHabitView: View {
             return false
         }
     }
-    
-    let columns = [
-        GridItem(.adaptive(minimum: 60))
-    ]
     
     
     var body: some View {
@@ -58,7 +50,6 @@ struct AddNewHabitView: View {
                                 .font(.title2)
                         }
                     }
-//                    .foregroundColor(.black)
                     
                     //Write Motivation and how much time per day do you want to make habits
                     Section {
@@ -97,7 +88,6 @@ struct AddNewHabitView: View {
                             }
                         }
                     }
-//                    .foregroundColor(.black)
                     
                     //Select suggested habits
                     Section(header: Text("Or use suggested habits")){
@@ -112,7 +102,7 @@ struct AddNewHabitView: View {
                             let habit = Habit(name: self.name, motivation: self.motivation, amountPerDay: self.amountPerDay, iconColor: icon.color, iconName: icon.name, reminder: self.reminder)
                             
                             
-                            habits.addNew(habit)
+                            viewModel.addNew(habit)
                             dismiss()
                         } label: {
                             HStack {
@@ -122,12 +112,11 @@ struct AddNewHabitView: View {
                         }
                         .disabled(formFillingCheck)
                     }
-                    
                 }
                 
                 
                 .sheet(isPresented: $showIconView){
-                    IconView(icon: icon, habit: habit)
+                    IconView(icon: icon)
                 }
             }
         }
@@ -138,6 +127,6 @@ struct AddNewHabitView: View {
 struct AddNewHabitView_Previews: PreviewProvider {
     
     static var previews: some View {
-        AddNewHabitView(habits: Habits())
+        AddNewHabitView(viewModel: HabitsViewModel())
     }
 }

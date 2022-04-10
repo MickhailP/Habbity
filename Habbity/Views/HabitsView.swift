@@ -1,5 +1,5 @@
 //
-//  MainPage.swift
+//  HabitsView.swift
 //  Habbity
 //
 //  Created by Миша Перевозчиков on 21.11.2021.
@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-struct MainPage: View {
+struct HabitsView: View {
     
     
 //    @Environment(\.colorScheme) var colorScheme
     
     @State private var showAddHabitView = false
     
-    @StateObject var habits = Habits()
+    @StateObject var viewModel = HabitsViewModel()
     
     
     var body: some View {
         NavigationView {
             ZStack {
-                if habits.items.isEmpty {
+                if viewModel.habits.isEmpty {
                     VStack {
                         Image("EmptyHabit")
                             .resizable()
@@ -39,16 +39,16 @@ struct MainPage: View {
                     
                 } else {
                     List{
-                        ForEach(habits.items, id: \.id){ habit in
+                        ForEach(viewModel.habits, id: \.id){ habit in
                             
                             HabitRowView(habit: habit) { newHabit in
-                                habits.update(habit: newHabit)
+                                viewModel.update(habit: newHabit)
                             }
                         }
                         
                         .onDelete{ index in
                             Task { @MainActor in
-                                habits.removeItems(at: index)
+                                viewModel.deleteHabit(at: index)
                             }
                         }
                         .listRowSeparator(.hidden)
@@ -72,7 +72,7 @@ struct MainPage: View {
                         }
                     })
             .sheet(isPresented: $showAddHabitView) {
-                AddNewHabitView(habits: habits, icon: Icon())
+                AddNewHabitView(viewModel: viewModel, icon: Icon())
             }
         }
     }
@@ -80,6 +80,6 @@ struct MainPage: View {
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainPage(habits: Habits())
+        HabitsView(viewModel: HabitsViewModel())
     }
 }

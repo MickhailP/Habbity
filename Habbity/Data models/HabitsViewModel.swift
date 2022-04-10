@@ -1,5 +1,5 @@
 //
-//  Habits.swift
+//  HabitsViewModel.swift
 //  Habbity
 //
 //  Created by Миша Перевозчиков on 05.12.2021.
@@ -9,46 +9,47 @@ import Foundation
 import UserNotifications
 
 
-@MainActor class Habits: ObservableObject {
+@MainActor class HabitsViewModel: ObservableObject {
     
-    @Published var items: [Habit]
+    @Published private (set) var habits: [Habit]
+    
+    private let saveKey = "Habits"
     
     init() {
-        if let saved = UserDefaults.standard.data(forKey: "Items"){
+        if let saved = UserDefaults.standard.data(forKey: saveKey){
             let decoder = JSONDecoder()
             
             if let decoded = try? decoder.decode([Habit].self, from: saved) {
-                items = decoded
+                habits = decoded
                 return
             }
         }
-        items = []
+        habits = []
     }
     
-    func save() {
+    private func save() {
         do {
-            let data = try JSONEncoder().encode(items)
-            UserDefaults.standard.set(data, forKey: "Items")
+            let data = try JSONEncoder().encode(habits)
+            UserDefaults.standard.set(data, forKey: saveKey)
         } catch {
             print("Failed to save data. ERROR: \(error.localizedDescription)")
         }
     }
     
     func addNew(_ habit: Habit) {
-        items.append(habit)
+        habits.append(habit)
         addNotification(for: habit)
         save()
     }
     
-    func removeItems(at offsets: IndexSet) {
-        items.remove(atOffsets: offsets)
+    func deleteHabit(at offsets: IndexSet) {
+        habits.remove(atOffsets: offsets)
         save()
     }
     
     func update(habit: Habit) {
-        
-        if let index = items.firstIndex(of: habit){
-            items[index] = habit
+        if let index = habits.firstIndex(of: habit){
+            habits[index] = habit
         }
     }
     

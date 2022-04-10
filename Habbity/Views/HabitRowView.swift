@@ -65,10 +65,13 @@ struct HabitRowView: View {
         
     }
     
+    // Check it in the next time!
     func updateDailyCounter() -> Habit {
         var newHabit = habit
         newHabit.dailyCounter += 1
         habit = newHabit
+        print(habit.dailyCounter)
+        print(newHabit.dailyCounter)
         
         return newHabit
         

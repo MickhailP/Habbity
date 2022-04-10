@@ -11,7 +11,6 @@ struct IconView: View {
     @Environment(\.dismiss) var dismiss
     
     @ObservedObject var icon: Icon
-    var habit: Habit
     
     let columns = [
         GridItem(.adaptive(minimum: 70))
@@ -39,6 +38,6 @@ struct IconView: View {
 
 struct IconView_Previews: PreviewProvider {
     static var previews: some View {
-        IconView(icon: Icon(), habit: Habit.example)
+        IconView(icon: Icon())
     }
 }
