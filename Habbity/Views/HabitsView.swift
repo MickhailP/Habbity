@@ -18,24 +18,11 @@ struct HabitsView: View {
     
     
     var body: some View {
-        NavigationView {
+        
             ZStack {
                 if viewModel.habits.isEmpty {
-                    VStack {
-                        Image("EmptyHabit")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .scaledToFit()
-                        Group {
-                            Text("📄 You haven't any habits yet.")
-                            Text("😃 Let's add a new one!")
-                        }
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.primary)
-                        .font(.title3)
-                        
-                    }
-                    .onTapGesture {showAddHabitView = true }
+                    NoHabitsView(showAddHabitView: $showAddHabitView)
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
                     
                 } else {
                     List{
@@ -75,7 +62,7 @@ struct HabitsView: View {
                 AddNewHabitView(viewModel: viewModel, icon: Icon())
             }
         }
-    }
+    
 }
 
 struct MainPage_Previews: PreviewProvider {

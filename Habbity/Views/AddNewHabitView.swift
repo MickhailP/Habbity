@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BottomSheet
 
 
 struct AddNewHabitView: View {
@@ -23,7 +24,7 @@ struct AddNewHabitView: View {
     
     @State private var reminder = Date.now
     
-    var formFillingCheck: Bool {
+    var formFillingChecking: Bool {
         if name.isEmpty || motivation.isEmpty {
             return true
         } else {
@@ -67,7 +68,7 @@ struct AddNewHabitView: View {
                     Section(header: Text("Select habit color")) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(icon.colors, id: \.self) { color in
+                                ForEach(Icon.colors, id: \.self) { color in
                                     
                                     ZStack{
                                         Circle()
@@ -110,14 +111,18 @@ struct AddNewHabitView: View {
                                 Image(systemName: "plus.circle")
                             }
                         }
-                        .disabled(formFillingCheck)
+                        .disabled(formFillingChecking)
                     }
                 }
                 
                 
-                .sheet(isPresented: $showIconView){
+                .bottomSheet(
+                    isPresented: $showIconView,
+                    prefersGrabberVisible: true
+                ) {
                     IconView(icon: icon)
                 }
+                
             }
         }
     }

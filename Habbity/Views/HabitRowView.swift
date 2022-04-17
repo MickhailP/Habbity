@@ -47,7 +47,7 @@ struct HabitRowView: View {
                     Spacer()
                     
                     Button(action: {
-                        onSave( updateDailyCounter())
+                        onSave( updateDailyCounter() )
                     }) {
                         Image(systemName: "checkmark.circle")
                     }

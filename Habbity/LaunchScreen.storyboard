@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyHabit" translatesAutoresizingMaskIntoConstraints="NO" id="usF-J0-hhN">
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="OJe-O1-eBD"/>
+                                    <constraint firstAttribute="height" constant="150" id="UCx-vX-rBA"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade yours habits." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVy-UH-xbp">
+                                <rect key="frame" x="114" y="543" width="186.5" height="23"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habbity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkB-qd-ISU">
+                                <rect key="frame" x="154.5" y="296" width="105" height="37"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                        <color key="backgroundColor" red="0.92540156839999999" green="0.92562085390000004" blue="0.92129641770000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VVy-UH-xbp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="42t-d4-7LM"/>
+                            <constraint firstItem="VVy-UH-xbp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5j4-V4-Md5"/>
+                            <constraint firstItem="usF-J0-hhN" firstAttribute="top" secondItem="OkB-qd-ISU" secondAttribute="bottom" constant="40" id="Dp0-4S-we3"/>
+                            <constraint firstItem="OkB-qd-ISU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Hsb-o0-jAl"/>
+                            <constraint firstItem="VVy-UH-xbp" firstAttribute="top" secondItem="usF-J0-hhN" secondAttribute="bottom" constant="20" id="anr-Wx-cww"/>
+                            <constraint firstItem="usF-J0-hhN" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="oeN-rx-bqe"/>
+                            <constraint firstItem="VVy-UH-xbp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ta2-Ng-T8Q"/>
+                            <constraint firstItem="usF-J0-hhN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vtJ-Tt-pmQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="EmptyHabit" width="400" height="400"/>
+    </resources>
+</document>

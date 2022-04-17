@@ -12,17 +12,17 @@ struct IconView: View {
     
     @ObservedObject var icon: Icon
     
-    let columns = [
-        GridItem(.adaptive(minimum: 70))
-    ]
+    
+    let columns = [ GridItem(.adaptive(minimum: 70)) ]
     
     
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 40){
-            ForEach(icon.names, id: \.self) { name in
+        
+        LazyVGrid(columns: columns, spacing: 20){
+            ForEach(Icon.names, id: \.self) { name in
                 Image(systemName: name)
                     .foregroundColor(Color.gray)
-                    .font(.system(size: 40))
+                    .font(.title)
                     .onTapGesture {
                         icon.name = name
                         dismiss()
@@ -30,6 +30,7 @@ struct IconView: View {
             }
         }
         .padding()
+        
     }
 }
 
