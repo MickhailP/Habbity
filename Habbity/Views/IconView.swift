@@ -10,11 +10,15 @@ import SwiftUI
 struct IconView: View {
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject var icon: Icon
+    @ObservedObject var icon = Icon()
     
+    var iconSelected: (String) -> Void
     
     let columns = [ GridItem(.adaptive(minimum: 70)) ]
     
+    init (icon: Icon, iconSelected: @escaping (String) -> Void) {
+        self.iconSelected = iconSelected
+    }
     
     var body: some View {
         
@@ -24,7 +28,7 @@ struct IconView: View {
                     .foregroundColor(Color.gray)
                     .font(.title)
                     .onTapGesture {
-                        icon.name = name
+                        iconSelected(name)
                         dismiss()
                     }
             }
@@ -39,6 +43,6 @@ struct IconView: View {
 
 struct IconView_Previews: PreviewProvider {
     static var previews: some View {
-        IconView(icon: Icon())
+        IconView(icon: Icon()) { _ in }
     }
 }

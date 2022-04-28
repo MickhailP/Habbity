@@ -12,57 +12,60 @@ struct HabitsView: View {
     
 //    @Environment(\.colorScheme) var colorScheme
     
-    @State private var showAddHabitView = false
+//    @State private var showAddHabitView = false
     
     @StateObject var viewModel = HabitsViewModel()
     
     
     var body: some View {
-        
-            ZStack {
-                if viewModel.habits.isEmpty {
-                    NoHabitsView(showAddHabitView: $showAddHabitView)
-                        .transition(AnyTransition.opacity.animation(.easeInOut))
-                    
-                } else {
-                    List{
-                        ForEach(viewModel.habits, id: \.id){ habit in
-                            
-                            HabitRowView(habit: habit) { newHabit in
-                                viewModel.update(habit: newHabit)
-                            }
-                        }
+        NavigationView{
+            ScrollView {
+                ZStack {
+                    if viewModel.habits.isEmpty {
+                        NoHabitsView(showAddHabitView: $viewModel.showAddHabitView)
+                            .transition(AnyTransition.opacity.animation(.easeInOut))
                         
-                        .onDelete{ index in
-                            Task { @MainActor in
-                                viewModel.deleteHabit(at: index)
+                    } else {
+                        VStack(spacing: 20){
+                            ForEach(viewModel.habits, id: \.id){ habit in
+                                
+                                HabitRowView(habit: habit) { newHabit in
+                                    viewModel.update(habit: newHabit)
+    
+                                }
+                                .padding(.horizontal, 20)
                             }
+                            
+                            .onDelete{ index in
+                                Task { @MainActor in
+                                    viewModel.deleteHabit(at: index)
+                                }
+                            }
+//                            .listRowSeparator(.hidden)
                         }
-                        .listRowSeparator(.hidden)
                     }
                 }
-            }
             
-            
-            
-            .listStyle(PlainListStyle())
-            .navigationBarTitle("My habits")
-            .navigationBarItems(
-                trailing:
+    //            .listStyle(PlainListStyle())
+                .listStyle(.inset)
+                .navigationBarTitle("My habits")
+                .toolbar {
                     Button(action:{
-                        showAddHabitView = true
+                        viewModel.showAddHabitView = true
                     }) {
                         VStack{
                             Image(systemName: "plus.circle")
-                            
                             Text("Add new habit")
                         }
-                    })
-            .sheet(isPresented: $showAddHabitView) {
-                AddNewHabitView(viewModel: viewModel, icon: Icon())
+                    }
+                }
+    //
+                .sheet(isPresented: $viewModel.showAddHabitView) {
+                    AddNewHabitView(viewModel: viewModel, icon: Icon())
+            }
             }
         }
-    
+    }
 }
 
 struct MainPage_Previews: PreviewProvider {

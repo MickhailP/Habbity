@@ -24,6 +24,13 @@ struct AddNewHabitView: View {
     
     @State private var reminder = Date.now
     
+    @State private var iconName = "book"
+    @State private var iconColor = "heaven"
+    
+    
+    //
+    //Check that our form fully filled
+    //
     var formFillingChecking: Bool {
         if name.isEmpty || motivation.isEmpty {
             return true
@@ -38,11 +45,12 @@ struct AddNewHabitView: View {
             VStack {
                 Form {
                     //Icon selecting and Habit naming
+                    //
                     Section(header: Text("Create your own habit")){
                         HStack {
-                            Image(systemName: icon.name)
+                            Image(systemName: iconName)
                                 .font(.system(size: 30))
-                                .foregroundColor(Color(icon.color))
+                                .foregroundColor(Color(iconColor))
                                 .padding(5)
                                 .onTapGesture{
                                     showIconView = true
@@ -53,6 +61,7 @@ struct AddNewHabitView: View {
                     }
                     
                     //Write Motivation and how much time per day do you want to make habits
+                    //
                     Section {
                         TextField("What will motivate you?", text: $motivation)
                         
@@ -60,11 +69,13 @@ struct AddNewHabitView: View {
                     }
                     
                     //Choose reminder time with DatePicker
+                    //
                     Section{
                         DatePicker("Select reminder time", selection: $reminder, displayedComponents: .hourAndMinute)
                     }
                     
                     // Color Selection
+                    //
                     Section(header: Text("Select habit color")) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
@@ -75,11 +86,10 @@ struct AddNewHabitView: View {
                                             .fill(Color(color))
                                             .frame(width: 40, height: 40)
                                             .onTapGesture {
-                                                icon.color = color
-                                                
+                                                iconColor = color
                                             }
                                             .padding(5)
-                                        if icon.color == color {
+                                        if iconColor == color {
                                             Circle()
                                                 .stroke(Color(color), lineWidth: 2)
                                                 .frame(width: 45, height: 45)
@@ -100,8 +110,7 @@ struct AddNewHabitView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            let habit = Habit(name: self.name, motivation: self.motivation, amountPerDay: self.amountPerDay, iconColor: icon.color, iconName: icon.name, reminder: self.reminder)
-                            
+                            let habit = Habit(name: self.name, motivation: self.motivation, amountPerDay: self.amountPerDay, iconColor: self.iconColor, iconName: self.iconName, reminder: self.reminder)
                             
                             viewModel.addNew(habit)
                             dismiss()
@@ -116,11 +125,14 @@ struct AddNewHabitView: View {
                 }
                 
                 
+                //Here we call a bottom sheet with icons and dismiss it when user make choice
                 .bottomSheet(
                     isPresented: $showIconView,
                     prefersGrabberVisible: true
                 ) {
-                    IconView(icon: icon)
+                    IconView(icon: icon) { selectedName in
+                        iconName = selectedName
+                    }
                 }
                 
             }

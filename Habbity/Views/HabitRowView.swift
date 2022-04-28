@@ -4,6 +4,11 @@
 //
 //  Created by Миша Перевозчиков on 10.04.2022.
 //
+// MARK: View description
+//  View that present a instance of Habit on the HabitsView screen
+//  Creates a rectangle card view
+//  Track a Habit's daily counter
+
 
 import SwiftUI
 
@@ -21,7 +26,7 @@ struct HabitRowView: View {
                 
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
                     .fill(colorScheme == .dark ? Color("dark") : .white)
-                    .shadow(color: .black.opacity(0.3), radius: 5)
+                    
                 
                 HStack {
                     Image(systemName: habit.iconName)
@@ -43,6 +48,7 @@ struct HabitRowView: View {
                                 .font(.subheadline)
                         }
                     }
+                    .foregroundColor(.black)
                     
                     Spacer()
                     
@@ -61,11 +67,11 @@ struct HabitRowView: View {
                 .padding(.vertical, 5)
                 
             }
+            .shadow(color: .black.opacity(0.1), radius: 20)
         }
         
     }
-    
-    // Check it in the next time!
+         // Check it in the next time!
     func updateDailyCounter() -> Habit {
         var newHabit = habit
         newHabit.dailyCounter += 1

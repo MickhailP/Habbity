@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct NoHabitsView: View {
+    //Connect with  AddHabitView to control when Big button will be tapped
     @Binding var showAddHabitView: Bool
+    
     @State private var animate: Bool = false
     
     var body: some View {

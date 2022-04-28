@@ -13,6 +13,8 @@ import UserNotifications
     
     @Published private (set) var habits: [Habit]
     
+    @Published var showAddHabitView = false
+    
     private let saveKey = "Habits"
     
     init() {

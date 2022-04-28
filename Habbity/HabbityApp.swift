@@ -11,10 +11,10 @@ import SwiftUI
 struct HabbityApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationView{
+            
                 ContentView()
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
+            
+            
         }
     }
 }
