@@ -11,14 +11,15 @@ struct ContentView: View {
     
     var body: some View {
         TabView{
+            
             HabitsView()
                 .tabItem {
                     Label("Habits", systemImage: "square.text.square")
                 }
             
-            SettingView()
+            SettingsView()
                 .tabItem {
-                    Label("Profile", systemImage: "person.crop.circle")
+                    Label("Settings", systemImage: "slider.vertical.3")
                 }
             
             //ADD PROGRESS VIEW

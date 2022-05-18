@@ -1,0 +1,44 @@
+{
+    "health": [
+        
+        {
+            "id": "b3797d24-5982-4877-bb08-2a163b6e8126",
+            
+            "name": "Drink water",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "blue",
+            "iconName": "drop"
+            
+        },
+        {
+            "id": "90671742-2c85-409b-ba82-346c0ecc2fb9",
+            
+            "name": "Take vitamins",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "heaven",
+            "iconName": "pills"
+            
+        },
+        {
+            "id": "debb9a02-ba57-494d-a33e-629d42c3b9ab",
+            
+            "name": "Workout",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "orange",
+            "iconName": "figure.walk"
+            
+        }
+    ]
+}

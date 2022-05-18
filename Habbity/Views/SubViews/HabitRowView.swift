@@ -67,9 +67,10 @@ struct HabitRowView: View {
                 .padding(.vertical, 5)
                 
             }
-            .shadow(color: .black.opacity(0.1), radius: 20)
+            
+      
         }
-        
+        .shadow(color: .black.opacity(0.1), radius: 15)
     }
          // Check it in the next time!
     func updateDailyCounter() -> Habit {

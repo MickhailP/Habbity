@@ -20,32 +20,37 @@ struct NoHabitsView: View {
                 .frame(width: 200, height: 200)
                 .scaledToFit()
                 .shadow(color: .white.opacity(0.4), radius: 10, x: 0, y: 0)
-            Group {
-                Text("📄 You've haven't any habits yet.")
-                    .padding(.bottom, 20)
-                Text("😃 Add a new one!")
-                    .foregroundColor(.white)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(animate ? Color("blue") : Color.green)
-                    .cornerRadius(15)
-                    .padding(.horizontal, animate ? 50 : 60)
-                    .shadow(color: animate ? Color("blue").opacity(0.7) : Color.green.opacity(0.7),
-                            radius: animate ? 30 : 10,
-                            x: 0,
-                            y: animate ? 50 :40)
-                    .offset(y: animate ? -7 : 0)
-                    .onTapGesture { showAddHabitView = true }
-                    .onAppear(perform: addAnimation)
-            }
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: 400)
-            .foregroundColor(.primary)
-            .font(.title3)
             
+            animatedAddButton
         }
     }
     
+    
+    var animatedAddButton: some View {
+        Group {
+            Text("📄 You've haven't any habits yet.")
+                .padding(.bottom, 20)
+            Text("😃 Add a new one!")
+                .foregroundColor(.white)
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .background(animate ? Color("blue") : Color.green)
+                .cornerRadius(15)
+                .padding(.horizontal, animate ? 50 : 60)
+                .shadow(color: animate ? Color("blue").opacity(0.7) : Color.green.opacity(0.7),
+                        radius: animate ? 30 : 10,
+                        x: 0,
+                        y: animate ? 50 :40)
+                .offset(y: animate ? -7 : 0)
+                .onTapGesture { showAddHabitView = true }
+                .onAppear(perform: addAnimation)
+        }
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: 400)
+        .foregroundColor(.primary)
+        .font(.title3)
+        
+    }
     func addAnimation() {
         // If animated is "false" animation will not appear.
         guard !animate else { return }
