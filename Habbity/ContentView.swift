@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var habitsViewModel = HabitsViewModel()
+    
     var body: some View {
         TabView{
             
@@ -16,11 +18,16 @@ struct ContentView: View {
                 .tabItem {
                     Label("Habits", systemImage: "square.text.square")
                 }
+            SamplesView()
+                .tabItem {
+                    Label("Inspiration", systemImage: "sparkles")
+                }
             
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "slider.vertical.3")
                 }
+            
             
             //ADD PROGRESS VIEW
             
@@ -28,6 +35,7 @@ struct ContentView: View {
             //JSON files with examples of Habits divided be groups. Think about remote handling of new ideas
         }
         .accentColor(Color.green)
+        .environmentObject(habitsViewModel)
     }
 }
 

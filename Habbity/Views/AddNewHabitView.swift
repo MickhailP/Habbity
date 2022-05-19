@@ -12,7 +12,9 @@ import BottomSheet
 struct AddNewHabitView: View {
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject var viewModel: HabitsViewModel
+    @EnvironmentObject var viewModel: HabitsViewModel
+    
+    var  habitSample: Habit?
     
     @StateObject var icon = Icon()
     
@@ -30,7 +32,6 @@ struct AddNewHabitView: View {
     
     //
     //Check that our form fully filled
-    //
     var formFillingChecking: Bool {
         if name.isEmpty || motivation.isEmpty {
             return true
@@ -39,11 +40,37 @@ struct AddNewHabitView: View {
         }
     }
     
+    init(habitSample: Habit?) {
+        if let habitSample = habitSample {
+            self.habitSample = habitSample
+            
+            _name = State(initialValue: habitSample.name)
+            _motivation = State(initialValue: habitSample.motivation)
+            _amountPerDay = State(initialValue: habitSample.amountPerDay)
+            _reminder = State(initialValue: habitSample.reminder)
+            _iconName = State(initialValue: habitSample.iconName)
+            _iconColor =  State(initialValue: habitSample.iconColor)
+         
+        }
+//        self.name = ""
+//        self.motivation = ""
+//        self.amountPerDay = 1
+//        self.showIconView = false
+//
+//        self.reminder = Date.now
+//
+//        self.iconName = "book"
+//        self.iconColor = "heaven"
+    }
+    init() {
+        
+    }
     
     var body: some View {
         NavigationView{
             VStack {
                 Form {
+                    
                     //Icon selecting and Habit naming
                     //
                     Section(header: Text("Create your own habit")){
@@ -64,41 +91,20 @@ struct AddNewHabitView: View {
                     //
                     Section {
                         TextField("What will motivate you?", text: $motivation)
-                        
                         Stepper("\(amountPerDay) times a day", value: $amountPerDay, in: 1...20)
                     }
                     
+                    //
                     //Choose reminder time with DatePicker
                     //
                     Section{
                         DatePicker("Select reminder time", selection: $reminder, displayedComponents: .hourAndMinute)
                     }
                     
-                    // Color Selection
                     //
-                    Section(header: Text("Select habit color")) {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(Icon.colors, id: \.self) { color in
-                                    
-                                    ZStack{
-                                        Circle()
-                                            .fill(Color(color))
-                                            .frame(width: 40, height: 40)
-                                            .onTapGesture {
-                                                iconColor = color
-                                            }
-                                            .padding(5)
-                                        if iconColor == color {
-                                            Circle()
-                                                .stroke(Color(color), lineWidth: 2)
-                                                .frame(width: 45, height: 45)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    // Color Selection
+                    colorSelectionSection
+                    
                     
                     //Select suggested habits
                     Section(header: Text("Or use suggested habits")){
@@ -110,10 +116,7 @@ struct AddNewHabitView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            let habit = Habit(name: self.name, motivation: self.motivation, amountPerDay: self.amountPerDay, iconColor: self.iconColor, iconName: self.iconName, reminder: self.reminder)
-                            
-                            viewModel.addNew(habit)
-                            dismiss()
+                            saveButtonPressed()
                         } label: {
                             HStack {
                                 Text("Save")
@@ -138,12 +141,45 @@ struct AddNewHabitView: View {
             }
         }
     }
+    
+    var colorSelectionSection: some View {
+        Section(header: Text("Select habit color")) {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(Icon.colors, id: \.self) { color in
+                        
+                        ZStack{
+                            Circle()
+                                .fill(Color(color))
+                                .frame(width: 40, height: 40)
+                                .onTapGesture {
+                                    iconColor = color
+                                }
+                                .padding(5)
+                            if iconColor == color {
+                                Circle()
+                                    .stroke(Color(color), lineWidth: 2)
+                                    .frame(width: 45, height: 45)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func saveButtonPressed() {
+        let habit = Habit(name: self.name, motivation: self.motivation, amountPerDay: self.amountPerDay, iconColor: self.iconColor, iconName: self.iconName, reminder: self.reminder)
+        
+        viewModel.addNew(habit)
+        dismiss()
+    }
 }
 
 
 struct AddNewHabitView_Previews: PreviewProvider {
     
     static var previews: some View {
-        AddNewHabitView(viewModel: HabitsViewModel())
+        AddNewHabitView(habitSample: nil)
     }
 }
