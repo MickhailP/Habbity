@@ -39,6 +39,154 @@
             "iconColor": "orange",
             "iconName": "figure.walk"
             
+        },
+        {
+            "id": "41345367-71de-411e-b189-bf22cda8eb1d",
+            
+            "name": "Running",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "orange",
+            "iconName": "figure.walk"
+            
+        },
+        {
+            "id": "6b69fbc3-f46b-4594-881a-449d6829249f",
+            
+            "name": "No alcohol",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "orange",
+            "iconName": "drop"
+            
+        },
+        {
+            "id": "9012e729-3ca6-4c37-bfbf-0f2aa5574184",
+            
+            "name": "7-hours sleep",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "orange",
+            "iconName": "bed.double"
+            
+        }
+    ],
+    "family": [
+        {
+            "id": "4aa666ed-c1fc-411c-a3f2-e0863972178d",
+            
+            "name": "Play with children",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "orange",
+            "iconName": "face.smiling"
+            
+        },
+        {
+            "id": "6bb7e703-eb2f-4eb7-b617-1f83b3a4e796",
+            
+            "name": "Family outing",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "blue",
+            "iconName": "figure.walk"
+            
+        },
+        {
+            "id": "78d00643-d172-43ba-ad4c-a4be02de068f",
+            
+            "name": "Call your parents",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "orange",
+            "iconName": "house"
+            
+        },
+        {
+            "id": "78f9f7ce-514a-46f2-ac5a-01d5f4d17b62",
+            
+            "name": "Date with wife",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "pink",
+            "iconName": "flame"
+            
+        }
+        
+    ],
+    "selfDevelopment": [
+        {
+            "id": "dd26b9c7-11e8-4dde-b28a-d4d180f20a48",
+            
+            "name": "Read a book",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "peach",
+            "iconName": "book"
+            
+        },
+        {
+            "id": "95021f29-2386-4ef1-8f57-1566514e1cb0",
+            
+            "name": "Learn a new language",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "pink",
+            "iconName": "globe.americas"
+            
+        },
+        {
+            "id": "3ee8dd54-1046-4741-9052-2fb5dac9672f",
+            
+            "name": "Listen to a useful podcast",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "pink",
+            "iconName": "brain.head.profile"
+            
+        },
+        {
+            "id": "191b3de1-f8c4-48f4-85ca-0b8ca483bf49",
+            
+            "name": "Make a To-Do list",
+            "motivation": "",
+            
+            "dailyCounter": 0,
+            "amountPerDay": 1,
+            
+            "iconColor": "pink",
+            "iconName": "checklist"
+            
         }
     ]
 }

@@ -25,6 +25,7 @@
 		D7A392572805FDA3001CC25C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7A392562805FDA3001CC25C /* LaunchScreen.storyboard */; };
 		D7AA2EE228106A9D00AB787E /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA2EE128106A9D00AB787E /* NetworkClient.swift */; };
 		D7ACACAE2833F2F500541742 /* HabitSamples.json in Resources */ = {isa = PBXBuildFile; fileRef = D7ACACAD2833F2F500541742 /* HabitSamples.json */; };
+		D7AF355F2838B2470095E4B7 /* samples.json in Resources */ = {isa = PBXBuildFile; fileRef = D7AF355E2838B2470095E4B7 /* samples.json */; };
 		D7B2E07C2807D24000A525B8 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D7B2E07B2807D24000A525B8 /* BottomSheet */; };
 		D7B6B6C92802C69F007C57E6 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B6B6C82802C69F007C57E6 /* Habit.swift */; };
 		D7B6B6CB2802CD8C007C57E6 /* HabitRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B6B6CA2802CD8C007C57E6 /* HabitRowView.swift */; };
@@ -51,6 +52,7 @@
 		D7A75BD827D7366D005DB370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D7AA2EE128106A9D00AB787E /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		D7ACACAD2833F2F500541742 /* HabitSamples.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HabitSamples.json; sourceTree = "<group>"; };
+		D7AF355E2838B2470095E4B7 /* samples.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = samples.json; sourceTree = "<group>"; };
 		D7B6B6C82802C69F007C57E6 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		D7B6B6CA2802CD8C007C57E6 /* HabitRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 				D70BA56D283554230039041F /* HabitSamplesViewModel.swift */,
 				D77C50AA2818703A00D82A59 /* HabitSamples.swift */,
 				D7ACACAD2833F2F500541742 /* HabitSamples.json */,
+				D7AF355E2838B2470095E4B7 /* samples.json */,
 			);
 			path = "Habit samples";
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7A392572805FDA3001CC25C /* LaunchScreen.storyboard in Resources */,
+				D7AF355F2838B2470095E4B7 /* samples.json in Resources */,
 				D758DFF1274A747300CBBF16 /* Preview Assets.xcassets in Resources */,
 				D7ACACAE2833F2F500541742 /* HabitSamples.json in Resources */,
 				D758DFEE274A747300CBBF16 /* Assets.xcassets in Resources */,

@@ -10,59 +10,68 @@ import SwiftUI
 struct HabitsView: View {
     
     
-//    @Environment(\.colorScheme) var colorScheme
-    
 //    @State private var showAddHabitView = false
     
-    @StateObject var viewModel = HabitsViewModel()
+//    @StateObject var viewModel = HabitsViewModel()
+    @EnvironmentObject var viewModel: HabitsViewModel
     
     
     var body: some View {
-        NavigationView{
-            ScrollView {
-                ZStack {
-                    if viewModel.habits.isEmpty {
-                        NoHabitsView(showAddHabitView: $viewModel.showAddHabitView)
-                            .transition(AnyTransition.opacity.animation(.easeInOut))
+        NavigationView {
+            ZStack {
+                if viewModel.habits.isEmpty {
+                    NoHabitsView(showAddHabitView: $viewModel.showAddHabitView)
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
+                    
+                } else {
+                    
+                    List(viewModel.habits) { habit in
                         
-                    } else {
-                        VStack(spacing: 20){
-                            ForEach(viewModel.habits, id: \.id){ habit in
-                                
-                                HabitRowView(habit: habit) { newHabit in
-                                    viewModel.update(habit: newHabit)
-    
-                                }
-                                .padding(.horizontal, 20)
-                            }
+                        HabitRowView(habit: habit) { newHabit in
+                            viewModel.update(habit: newHabit)
                             
-                            .onDelete{ index in
-                                Task { @MainActor in
-                                    viewModel.deleteHabit(at: index)
-                                }
-                            }
-//                            .listRowSeparator(.hidden)
                         }
                     }
+                    .listRowSeparator(.hidden)
+                    .listStyle(.plain)
+                    
+//                    List{
+//                        ForEach(viewModel.habits, id: \.id){ habit in
+//
+//                            HabitRowView(habit: habit) { newHabit in
+//                                viewModel.update(habit: newHabit)
+//                            }
+//                            .padding(.vertical, 5)
+//                        }
+//
+//                        .onDelete{ index in
+//                            Task { @MainActor in
+//                                viewModel.deleteHabit(at: index)
+//                            }
+//                        }
+//                        .listRowSeparator(.hidden)
+//                    }
+//                    .listStyle(.plain)
                 }
-            
-    //            .listStyle(PlainListStyle())
-                .listStyle(.inset)
-                .navigationBarTitle("My habits")
-                .toolbar {
-                    Button(action:{
-                        viewModel.showAddHabitView = true
-                    }) {
-                        VStack{
-                            Image(systemName: "plus.circle")
-                            Text("Add new habit")
-                        }
-                    }
-                }
-    //
-                .sheet(isPresented: $viewModel.showAddHabitView) {
-                    AddNewHabitView(viewModel: viewModel, icon: Icon())
             }
+            
+            
+            
+           
+//            .listStyle(.inset)
+            .navigationBarTitle("My habits")
+            .toolbar {
+                Button(action:{
+                    viewModel.showAddHabitView = true
+                }) {
+                    VStack{
+                        Image(systemName: "plus.circle")
+                        Text("Add new habit")
+                    }
+                }
+            }
+            .sheet(isPresented: $viewModel.showAddHabitView) {
+                AddNewHabitView()
             }
         }
     }
@@ -70,6 +79,7 @@ struct HabitsView: View {
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        HabitsView(viewModel: HabitsViewModel())
+        HabitsView()
+            
     }
 }
